@@ -41,17 +41,19 @@ public class HexagonDrawer {
 		// Row 2
 		renderHex(BORDER,
 				BORDER + longLegOfTriangleEdge);
-		renderHex(BORDER + shortLegOfTriangleEdge + lengthOfHorizontalEdge,
-				BORDER + hexHeight);
 		renderHex(BORDER + hexWidth + lengthOfHorizontalEdge,
 				BORDER + longLegOfTriangleEdge);
 		// Row 3
+		renderHex(BORDER + shortLegOfTriangleEdge + lengthOfHorizontalEdge,
+				BORDER + hexHeight);
+		// Row 4
 		renderHex(BORDER,
 				BORDER + longLegOfTriangleEdge + hexHeight);
-		renderHex(BORDER + shortLegOfTriangleEdge + lengthOfHorizontalEdge,
-				BORDER + hexHeight + hexHeight);
 		renderHex(BORDER + hexWidth + lengthOfHorizontalEdge,
 				BORDER + longLegOfTriangleEdge + hexHeight);
+		// Row 5
+		renderHex(BORDER + shortLegOfTriangleEdge + lengthOfHorizontalEdge,
+				BORDER + hexHeight + hexHeight);
 	}
 
 	private void renderHex(int xBound, int yBound) {
@@ -60,30 +62,37 @@ public class HexagonDrawer {
 		System.out.println("\t\tfill=\"none\" stroke=\"black\" stroke-width=\"1\"");
 		System.out.println("\t\td=\"M");
 		// Top-Left
-		System.out.println("\t\t\t" + twice(xBound + shortLegOfTriangleEdge
-				+ "," + yBound));
+		System.out.println("\t\t\t"
+				+ twiceWithSpaceBetween(xBound + shortLegOfTriangleEdge
+						+ "," + yBound));
 		// Top-Right
-		System.out.println("\t\t\t" + twice(xBound + shortLegOfTriangleEdge + lengthOfHorizontalEdge
-				+ "," + yBound));
+		System.out.println("\t\t\t"
+				+ twiceWithSpaceBetween(xBound + shortLegOfTriangleEdge + lengthOfHorizontalEdge
+						+ "," + yBound));
 		// Right
-		System.out.println("\t\t\t" + twice(xBound + hexWidth
-				+ "," + (yBound + longLegOfTriangleEdge)));
+		System.out.println("\t\t\t"
+				+ twiceWithSpaceBetween(xBound + hexWidth
+						+ "," + (yBound + longLegOfTriangleEdge)));
 		// Bottom-Right
-		System.out.println("\t\t\t" + twice(xBound + shortLegOfTriangleEdge + lengthOfHorizontalEdge
-				+ "," + (yBound + hexHeight)));
+		System.out.println("\t\t\t"
+				+ twiceWithSpaceBetween(xBound + shortLegOfTriangleEdge + lengthOfHorizontalEdge
+						+ "," + (yBound + hexHeight)));
 		// Bottom-Left
-		System.out.println("\t\t\t" + twice(xBound + shortLegOfTriangleEdge
-				+ "," + (yBound + hexHeight)));
+		System.out.println("\t\t\t"
+				+ twiceWithSpaceBetween(xBound + shortLegOfTriangleEdge
+						+ "," + (yBound + hexHeight)));
 		// Left
-		System.out.println("\t\t\t" + twice(xBound
-				+ "," + (yBound + longLegOfTriangleEdge)));
+		System.out.println("\t\t\t"
+				+ twiceWithSpaceBetween(xBound
+						+ "," + (yBound + longLegOfTriangleEdge)));
 		// Top-Left (again)
-		System.out.println("\t\t\t" + twice(xBound + shortLegOfTriangleEdge
-				+ "," + yBound));
+		System.out.println("\t\t\t"
+				+ twiceWithSpaceBetween(xBound + shortLegOfTriangleEdge
+						+ "," + yBound));
 		System.out.println("\t\t\"/>");
 	}
 
-	private String twice(String string) {
+	private String twiceWithSpaceBetween(String string) {
 		return string + " " + string;
 	}
 }
