@@ -104,4 +104,16 @@ public class HexagonDrawerTest {
 		assertEquals(2, hexDrawer.renderRow(12).length);
 		assertEquals(1, hexDrawer.renderRow(13).length);
 	}
+
+	@Test
+	public void shouldIncludeBorderAsOffsetWhenBorderUsed() {
+		HexagonDrawer hexDrawerWithoutBorder = new HexagonDrawer(10, 3);
+		HexagonDrawer hexDrawerWithBorder = new HexagonDrawer(10, 3);
+		hexDrawerWithBorder.setUseBorder(true);
+
+		assertEquals(hexDrawerWithoutBorder.renderRow(2)[0].getOrigin().x + 100,
+				hexDrawerWithBorder.renderRow(2)[0].getOrigin().x);
+		assertEquals(hexDrawerWithoutBorder.renderRow(2)[0].getOrigin().y + 100,
+				hexDrawerWithBorder.renderRow(2)[0].getOrigin().y);
+	}
 }

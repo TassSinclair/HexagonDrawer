@@ -6,12 +6,15 @@ import net.sinclair.hexagon.Hexagon.HexPoint;
 
 public class HexagonDrawer {
 
+	private final static int BORDER = 100;
 	private final int lengthOfHorizontalEdge;
 	private final int diameterInHexagons;
+	private boolean useBorder = false;
 
 	public static void main(String... args) {
 
 		HexagonDrawer instance = new HexagonDrawer(Integer.parseInt(args[0]), Integer.parseInt(args[1]));
+		instance.setUseBorder(true);
 		instance.process();
 	}
 
@@ -56,8 +59,10 @@ public class HexagonDrawer {
 		int hexWidth = Hexagon.calculateWidth(lengthOfHorizontalEdge) + lengthOfHorizontalEdge;
 
 		int hexWidthInterlock = Hexagon.calculateHorizontalInterlockDistance(lengthOfHorizontalEdge);
-		int xOffset = (sectionCeiling - hexagonsThisRow) * hexWidthInterlock;
-		int yOffset = Hexagon.calculateVerticalInterlockDistance(lengthOfHorizontalEdge) * (row - 1);
+		int xOffset = (useBorder ? BORDER : 0)
+				+ (sectionCeiling - hexagonsThisRow) * hexWidthInterlock;
+		int yOffset = (useBorder ? BORDER : 0)
+				+ Hexagon.calculateVerticalInterlockDistance(lengthOfHorizontalEdge) * (row - 1);
 
 		for (int i = 0; i < hexagons.length; ++i) {
 			hexagons[i] = new Hexagon(new Point(xOffset, yOffset), lengthOfHorizontalEdge);
@@ -88,5 +93,13 @@ public class HexagonDrawer {
 
 	private String twiceWithSpaceBetween(String string) {
 		return string + " " + string;
+	}
+
+	public boolean getUseBorder() {
+		return useBorder;
+	}
+
+	public void setUseBorder(boolean useBorder) {
+		this.useBorder = useBorder;
 	}
 }
